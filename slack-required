@@ -1,2 +1,2 @@
-qt >= 3.3.6
-readline >= 5.1
+qt >= 3.3.8
+readline >= 5.2
