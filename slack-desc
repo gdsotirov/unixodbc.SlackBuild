@@ -1,11 +1,11 @@
-unixODBC: unixODBC - Open source implementation of the ODBC standard 
-unixODBC:
-unixODBC: unixODBC is an Open Source ODBC sub-system and an ODBC SDK for
-unixODBC: Linux, Mac OS-X, and Unix. The package includes a driver manager;
-unixODBC: an installer library and command line tool; drivers and driver setup
-unixODBC: libraries; graphical tools to admin ODBC, test drivers, and browse
-unixODBC: data sources; and command line tools to help install a driver and
-unixODBC: work with SQL. 
-unixODBC:
-unixODBC: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
-unixODBC:
+unixodbc: unixODBC - Open source implementation of the ODBC standard 
+unixodbc:
+unixodbc: unixODBC is an Open Source ODBC sub-system and an ODBC SDK for
+unixodbc: Linux, Mac OS-X, and Unix. The package includes a driver manager;
+unixodbc: an installer library and command line tool; drivers and driver setup
+unixodbc: libraries; graphical tools to admin ODBC, test drivers, and browse
+unixodbc: data sources; and command line tools to help install a driver and
+unixodbc: work with SQL. 
+unixodbc:
+unixodbc:
+unixodbc: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
