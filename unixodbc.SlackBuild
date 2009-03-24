@@ -8,7 +8,7 @@
 
 NAME=unixODBC
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
-VERSION=2.2.12
+VERSION=2.2.14
 BUILD=1
 ARCH=${ARCH:-i486}
 
@@ -30,14 +30,14 @@ CXXFLAGS=$SLKCFLAGS \
             --enable-static=no \
             --enable-gui \
             --enable-threads \
-            --enable-readline
+            --enable-readline || exit 1
 
-make -j4 || exit 1
+make -j4 || exit 2
 
 PKG="$TMP/package-$PNAME"
 mkdir -p $PKG
 
-make DESTDIR=$PKG install
+make DESTDIR=$PKG install || exit 3
 
 # Prepare the package
 bin_perms $PKG
@@ -47,11 +47,13 @@ create_docs $PKG $PNAME-$VERSION
 install -m 755 -d $PKG/install
 install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
 install -m 644 $CWD/slack-required $PKG/install/slack-required
+install -m 644 $CWD/slack-suggests $PKG/install/slack-suggests
 
 install -m 755 -d $PKG/usr/src/slackbuilds/$PNAME-$VERSION
-install -m 644 $CWD/slack-desc       $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-desc
-install -m 644 $CWD/slack-required   $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-required
-install -m 644 $CWD/$NAME.SlackBuild $PKG/usr/src/slackbuilds/$PNAME-$VERSION/$NAME.SlackBuild
+install -m 644 $CWD/slack-desc        $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-desc
+install -m 644 $CWD/slack-required    $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-required
+install -m 644 $CWD/slack-suggests    $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-suggests
+install -m 644 $CWD/$PNAME.SlackBuild $PKG/usr/src/slackbuilds/$PNAME-$VERSION/$PNAME.SlackBuild
 
 # Assemble the package in the package dir
 cd $PKG
