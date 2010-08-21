@@ -1,3 +1,4 @@
-glibc-solibs >= 2.7
-ncurses >= 5.6
+glibc-solibs >= 2.11.1
+libtool >= 2.2.6b
+ncurses >= 5.7
 readline >= 5.2
