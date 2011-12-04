@@ -1,15 +1,32 @@
 #!/bin/sh
 #
-# Build script for unixODBC drivers
-# Written by Georgi D. Sotirov <gdsotirov@dir.bg>
+# Slackware build script for unixODBC drivers
+# Copyright (C) 2007-2011 Georgi D. Sotirov <gdsotirov@dir.bg>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
+# $Id: unixodbc.SlackBuild,v 1.5 2011/12/04 08:01:03 gsotirov Exp $
+#
 
-. ../slack-package.conf
+. ../../slack-package.conf
 
 NAME=unixODBC
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
-VERSION=2.3.0
+VERSION=2.3.1
 BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
@@ -42,20 +59,20 @@ fix_source
 # Configure
 CFLAGS=$SLKCFLAGS \
 CXXFLAGS=$SLKCFLAGS \
-./configure \
-  --build=$ARCH-slackware-linux \
-  --host=$ARCH-slackware-linux \
-  --prefix=/usr \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --enable-shared=yes \
-  --enable-static=no \
-  --enable-threads \
-  --enable-readline \
-  --enable-drivers=yes \
-  --enable-dirver-conf=yes \
-  --enable-iconv \
-  --enable-stats || exit 1
+./configure --build=$ARCH-slackware-linux \
+            --host=$ARCH-slackware-linux \
+            --prefix=/usr \
+            --sysconfdir=/etc \
+            --libdir=/usr/lib${LIBDIRSUFFIX} \
+            --localstatedir=/var \
+            --enable-shared=yes \
+            --enable-static=no \
+            --enable-threads \
+            --enable-readline \
+            --enable-drivers=yes \
+            --enable-dirver-conf=yes \
+            --enable-iconv \
+            --enable-stats || exit 1
 
 # Build & install
 make -j4 || exit 2
