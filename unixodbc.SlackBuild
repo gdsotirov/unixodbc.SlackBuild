@@ -9,7 +9,7 @@
 NAME=unixODBC
 PNAME=`echo $NAME | tr "[:upper:]" "[:lower:]"`
 VERSION=2.2.14
-BUILD=1
+BUILD=${BUILD:-1}
 ARCH=${ARCH:-i486}
 
 TMP=${TMP:-/tmp}
@@ -26,9 +26,10 @@ CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
             --host=i486-slackware-linux \
             --prefix=/usr \
+            --libdir=/usr/lib${LIBDIRSUFFIX} \
             --enable-shared=yes \
             --enable-static=no \
-            --enable-gui \
+            --disable-gui \
             --enable-threads \
             --enable-readline || exit 1
 
@@ -47,12 +48,12 @@ create_docs $PKG $PNAME-$VERSION
 install -m 755 -d $PKG/install
 install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
 install -m 644 $CWD/slack-required $PKG/install/slack-required
-install -m 644 $CWD/slack-suggests $PKG/install/slack-suggests
+#install -m 644 $CWD/slack-suggests $PKG/install/slack-suggests
 
 install -m 755 -d $PKG/usr/src/slackbuilds/$PNAME-$VERSION
 install -m 644 $CWD/slack-desc        $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-desc
 install -m 644 $CWD/slack-required    $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-required
-install -m 644 $CWD/slack-suggests    $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-suggests
+#install -m 644 $CWD/slack-suggests    $PKG/usr/src/slackbuilds/$PNAME-$VERSION/slack-suggests
 install -m 644 $CWD/$PNAME.SlackBuild $PKG/usr/src/slackbuilds/$PNAME-$VERSION/$PNAME.SlackBuild
 
 # Assemble the package in the package dir
