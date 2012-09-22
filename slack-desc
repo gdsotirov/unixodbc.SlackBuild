@@ -3,9 +3,9 @@ unixodbc:
 unixodbc: unixODBC is an Open Source ODBC sub-system and an ODBC SDK for
 unixodbc: Linux, Mac OS-X, and Unix. The package includes a driver manager;
 unixodbc: an installer library and command line tool; drivers and driver setup
-unixodbc: libraries; graphical tools to admin ODBC, test drivers, and browse
-unixodbc: data sources; and command line tools to help install a driver and
-unixodbc: work with SQL. 
+unixodbc: libraries; test drivers, and browse, data sources; and command line
+unixodbc: tools to help install a driver and work with SQL. 
+unixodbc:
 unixodbc:
 unixodbc:
 unixodbc: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
