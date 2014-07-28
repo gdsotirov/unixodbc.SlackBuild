@@ -1,4 +1,4 @@
-glibc-solibs >= 2.13
+glibc-solibs >= 2.17
 libtool >= 2.4.2
 ncurses >= 5.9
 readline >= 5.2
